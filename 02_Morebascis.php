@@ -57,8 +57,8 @@
         } while ($a < 10 );
 
         // For Loop 
-        $a = 200;
-        for ($a=0; $a < 10; $a++) { 
+        
+        for ($a=60; $a < 10; $a++) { 
             echo "<br>The value of a is from for loop :";
             echo $a;
         }
