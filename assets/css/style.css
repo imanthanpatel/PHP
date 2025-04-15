@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing : border-box;
+}
+.container02 {
+    max-width: 80%;
+    background-color: rgb(228,195,195);
+    margin: auto;
+    padding: 23px;
+
+}
