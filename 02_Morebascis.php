@@ -63,6 +63,25 @@
             echo $a;
         }
 
+        // For each
+        foreach($languages as $value){
+            echo "<br>the value  from foreach loop is ";
+            echo $value;
+        }
+        // Function : which is used to run again and again in code
+        echo "<h1>Function In Php </h1>";
+        function print5(){
+            echo "FIVE";
+        }
+        print5();
+        function print_number($number){
+            echo "<br>your number is :";
+            echo $number;
+        }
+        print_number(45);
+        
+        
+
         
 
         
