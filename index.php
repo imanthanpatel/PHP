@@ -1,12 +1,68 @@
 <?php
+    if(isset($_POST['name'])){
     $server ="localHost";
     $username = "root";
     $password = "";
-    $con = mysqli_connect($server,$username,$password)
+    $con = mysqli_connect($server,$username,$password);
 
     if(!$con){
         die("connection to this database failed due to" .mysqli_connect_error());
     }
 
-    echo "Succes Connection to db";
+    // echo "Succes Connection to db";
+    $name = $_POST['name'];
+    $gender = $_POST['gender'];
+    $age = $_POST['age'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $dsc = $_POST['dsc'];
+
+
+    $sql = "
+    INSERT INTO `trip`.`trip` ( `name`, `age`, `gender`, `email`, `phone`, `other`, `dt`) VALUES ( '$name', '$age', '$gender', '$email', '$phone', '$dsc', current_timestamp()); ";
+    echo $sql;
+
+    if($con->query($sql)== true){
+        echo "Succesfully Inserted";
+    } else{
+        echo "ERROR: $sql <br> $con->error";
+    }
+    $con->close();
+
+}
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to travel form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style01.css">
+</head>
+<body>
+    <img  class="bg" src="./assets/img/bg.jpg" alt="GSFC University">
+    <div class="container">
+        <h1>Welcome to GSFC University US trip</h1>
+        <p>Enter your detail  and submit these to confirm your participation in the trip.</p>
+        <p class="submitmsg">Thanks for submiting your responce . We are happy to see you joing for the us trip</p>
+        <form action="index.php" method="post">
+            <input type="text" name="name" id="name" placeholder="Enter your name">
+            <input type="text" name="age" id="age" placeholder="Enter your age">
+            <input type="text" name="gender" id="gender" placeholder="Enter your gender">
+            <input type="email" name="email" id="email" placeholder="Enter your email">
+            <input type="phone" name="phone" id="phone" placeholder="Enter your phone">
+            <textarea name="dsc" id="dsc" cols="30" rows="10" placeholder="Enter any other information">
+
+            </textarea>
+            <button class="btn">Submit</button>
+            <!-- <button class="btn01">Reset</button> -->
+
+        </form>
+    </div>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>
