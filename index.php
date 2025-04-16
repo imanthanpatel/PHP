@@ -1,5 +1,7 @@
 <?php
     if(isset($_POST['name'])){
+     $insert = false;   
+        
     $server ="localHost";
     $username = "root";
     $password = "";
@@ -20,10 +22,11 @@
 
     $sql = "
     INSERT INTO `trip`.`trip` ( `name`, `age`, `gender`, `email`, `phone`, `other`, `dt`) VALUES ( '$name', '$age', '$gender', '$email', '$phone', '$dsc', current_timestamp()); ";
-    echo $sql;
+    // echo $sql;
 
     if($con->query($sql)== true){
-        echo "Succesfully Inserted";
+        // echo "Succesfully Inserted";
+        $insert = true;
     } else{
         echo "ERROR: $sql <br> $con->error";
     }
@@ -48,7 +51,12 @@
     <div class="container">
         <h1>Welcome to GSFC University US trip</h1>
         <p>Enter your detail  and submit these to confirm your participation in the trip.</p>
-        <p class="submitmsg">Thanks for submiting your responce . We are happy to see you joing for the us trip</p>
+        <?php
+        if($insert == true){
+       echo " <p class='
+        submitmsg'>Thanks for submiting your responce . We are happy to see you joing for the us trip</p>";
+        }
+        ?>
         <form action="index.php" method="post">
             <input type="text" name="name" id="name" placeholder="Enter your name">
             <input type="text" name="age" id="age" placeholder="Enter your age">
